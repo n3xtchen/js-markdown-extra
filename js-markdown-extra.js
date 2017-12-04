@@ -868,7 +868,8 @@ Markdown_Parser.prototype.doHeaders = function(text) {
             return match;
         }
         var level = line.charAt(0) == '=' ? 1 : 2;
-        var block = "<h" + level + ">" + self.runSpanGamut(span) + "</h" + level + ">";
+        var title = self.runSpanGamut(span);
+        var block = "<h" + level + " id=\""+ title.replace(/\s/g,'-') +"\" >" + title + "</h" + level + ">";
         return "\n" + self.hashBlock(block)  + "\n\n";
     });
 
